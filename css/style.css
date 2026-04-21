@@ -548,6 +548,16 @@ li { margin-bottom: 0.3rem; }
   margin-bottom: 0;
 }
 
+.step__text a {
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.step__text a:hover {
+  color: var(--purple);
+}
+
 @media (max-width: 768px) {
   .steps-grid {
     grid-template-columns: repeat(2, 1fr);
