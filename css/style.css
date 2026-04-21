@@ -2,8 +2,7 @@
    WHITSTABLE DOG CARE — SHARED STYLESHEET
    ============================================= */
 
-/* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@400;700;900&family=Oswald:wght@400;500;600&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap');
+/* --- Google Fonts loaded via <link> in HTML --- */
 
 /* --- Variables --- */
 :root {
@@ -440,9 +439,8 @@ li { margin-bottom: 0.3rem; }
 .cta-reassurance {
   font-size: 0.85rem;
   font-style: italic;
-  color: var(--body-text);
+  color: #3a3839;
   margin-bottom: 0;
-  opacity: 0.8;
 }
 
 /* =============================================

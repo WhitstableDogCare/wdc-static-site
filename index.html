@@ -12,6 +12,7 @@
   <meta property="og:image" content="https://whitstabledogcare.co.uk/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <link rel="preload" as="image" href="images/logo.webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700;900&family=Oswald:wght@400;500;600&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
@@ -49,7 +50,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="header-logo">
-        <img src="images/logo.webp" alt="Whitstable Dog Care logo" />
+        <img src="images/logo.webp" alt="Whitstable Dog Care logo" width="500" height="500" />
         <span>Whitstable<br>Dog Care</span>
       </a>
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
@@ -67,7 +68,7 @@
 
   <!-- GRASS STRIP -->
   <div class="grass-strip">
-    <img src="images/blue-grass.webp" alt="" role="presentation" />
+    <img src="images/blue-grass.webp" alt="" role="presentation" width="2500" height="1406" />
   </div>
 
   <main>
@@ -77,7 +78,7 @@
       <div class="container">
         <div class="hero-inner">
           <div class="hero-logo-wrap">
-            <img src="images/logo.webp" alt="Whitstable Dog Care circular logo" />
+            <img src="images/logo.webp" alt="Whitstable Dog Care circular logo" width="500" height="500" fetchpriority="high" loading="eager" />
           </div>
           <div class="hero-content">
             <p class="subheading">Whitstable, Kent</p>
@@ -157,10 +158,10 @@
 
           <div>
             <img
+              loading="lazy"
               src="images/blue-garden.webp"
               alt="Blue the whippet in the garden"
-              style="width:100%; height:auto; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.12);"
-            />
+              style="width:100%; height:auto; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" width="2497" height="2711" />
           </div>
 
         </div>
@@ -260,7 +261,7 @@
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <img src="images/footer-logo.png" alt="Whitstable Dog Care logo" class="footer-logo" />
+    <img src="images/footer-logo.webp" alt="Whitstable Dog Care logo" class="footer-logo" width="2000" height="2000" />
     <p><a href="tel:07840469646">07840 469 646</a></p>
     <p><a href="mailto:jack@whitstabledogcare.co.uk">jack@whitstabledogcare.co.uk</a></p>
     <p class="footer-licence">Canterbury City Council Home Boarding for Dogs<br>
