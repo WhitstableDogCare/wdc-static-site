@@ -93,21 +93,29 @@
     <!-- CALENDAR -->
     <section class="section section--white" style="padding-top:2rem;">
       <div class="container">
-        <div class="calendar-wrap">
-          <iframe
-            src="https://calendar.google.com/calendar/embed?src=c_4d80f180f301ddb8c681fedffda3b8d68306fdf77db0388debc7cf456036a260%40group.calendar.google.com&ctz=Europe%2FLondon&mode=MONTH"
-            style="border:0; display:block;"
-            width="100%"
-            height="600"
-            frameborder="0"
-            scrolling="no"
-            title="Whitstable Dog Care availability calendar"
-          ></iframe>
+
+        <div class="availability-calendar" id="availability-calendar">
+          <div class="cal-header">
+            <button class="cal-nav" id="cal-prev" aria-label="Previous month">&#8249;</button>
+            <h2 class="cal-month-label" id="cal-month-label"></h2>
+            <button class="cal-nav" id="cal-next" aria-label="Next month">&#8250;</button>
+          </div>
+          <div class="cal-grid-header" aria-hidden="true">
+            <span>Mon</span><span>Tue</span><span>Wed</span>
+            <span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+          </div>
+          <div class="cal-grid" id="cal-grid" role="grid">
+            <div class="cal-loading">Loading availability…</div>
+          </div>
+          <div class="cal-legend" aria-label="Calendar key">
+            <span class="cal-legend-item"><span class="cal-dot cal-dot--green"></span> Available</span>
+            <span class="cal-legend-item"><span class="cal-dot cal-dot--amber"></span> Limited spaces</span>
+            <span class="cal-legend-item"><span class="cal-dot cal-dot--red"></span> Fully booked</span>
+            <span class="cal-legend-item"><span class="cal-dot cal-dot--grey"></span> Unavailable</span>
+            <span class="cal-legend-item"><span class="cal-dot cal-dot--unsynced"></span> Not yet updated</span>
+          </div>
         </div>
 
-        <p style="margin-top:1.5rem; font-size:0.9rem; color:#666;">
-          Can't see the calendar? <a href="https://calendar.google.com/calendar/embed?src=c_4d80f180f301ddb8c681fedffda3b8d68306fdf77db0388debc7cf456036a260%40group.calendar.google.com&ctz=Europe%2FLondon" target="_blank" rel="noopener">Open it directly in Google Calendar</a>.
-        </p>
       </div>
     </section>
 
@@ -151,6 +159,116 @@
         hamburger.setAttribute('aria-expanded', false);
       });
     });
+  </script>
+
+  <!-- Availability calendar widget -->
+  <script>
+  (function () {
+    var CALENDAR_ID = 'c_4d80f180f301ddb8c681fedffda3b8d68306fdf77db0388debc7cf456036a260@group.calendar.google.com';
+    var API_KEY     = 'AIzaSyB7azbuW6AgV42mdCC1V2lqmxZh5UlQjwg';
+    var MONTHS      = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    var grid  = document.getElementById('cal-grid');
+    var label = document.getElementById('cal-month-label');
+    var now   = new Date();
+    var year  = now.getFullYear();
+    var month = now.getMonth(); // 0-indexed
+
+    // Classify an event into one of four statuses
+    function getStatus(event) {
+      var title = event.summary || '';
+      var desc  = event.description || '';
+      if (title === 'Fully Booked')   return 'full';
+      if (title === 'Unavailable')    return 'unavailable';
+      if (title === 'Spaces Available') {
+        // Description is "1 space remaining" or "2 spaces remaining" for limited
+        return /^[12] space/.test(desc) ? 'limited' : 'available';
+      }
+      return null;
+    }
+
+    function fetchEvents(y, m) {
+      var start  = new Date(y, m, 1).toISOString();
+      var end    = new Date(y, m + 1, 0, 23, 59, 59).toISOString();
+      var calId  = encodeURIComponent(CALENDAR_ID);
+      var url    = 'https://www.googleapis.com/calendar/v3/calendars/' + calId +
+                   '/events?key=' + API_KEY +
+                   '&timeMin=' + encodeURIComponent(start) +
+                   '&timeMax=' + encodeURIComponent(end) +
+                   '&singleEvents=true&orderBy=startTime';
+      return fetch(url).then(function (r) { return r.json(); });
+    }
+
+    function buildEventMap(events) {
+      var map = {};
+      (events || []).forEach(function (e) {
+        var date = e.start && e.start.date;
+        if (date) map[date] = getStatus(e);
+      });
+      return map;
+    }
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function renderMonth(y, m) {
+      label.textContent = MONTHS[m] + ' ' + y;
+      grid.innerHTML = '<div class="cal-loading">Loading availability\u2026</div>';
+
+      fetchEvents(y, m).then(function (data) {
+        var eventMap   = buildEventMap(data.items);
+        var firstDay   = new Date(y, m, 1);
+        var lastDate   = new Date(y, m + 1, 0).getDate();
+        var todayStr   = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+
+        // Monday-first offset (getDay: 0=Sun,1=Mon…)
+        var offset = (firstDay.getDay() + 6) % 7;
+
+        var html = '';
+
+        // Empty leading cells
+        for (var i = 0; i < offset; i++) {
+          html += '<div class="cal-cell cal-cell--empty"></div>';
+        }
+
+        // Day cells
+        for (var d = 1; d <= lastDate; d++) {
+          var dateStr = y + '-' + pad(m + 1) + '-' + pad(d);
+          var status  = eventMap[dateStr];
+          var isPast  = dateStr < todayStr;
+          var isToday = dateStr === todayStr;
+
+          var cls = 'cal-cell';
+          if (isPast)                    cls += ' cal-cell--past';
+          if (isToday)                   cls += ' cal-cell--today';
+          if (status === 'available')    cls += ' cal-cell--available';
+          else if (status === 'limited') cls += ' cal-cell--limited';
+          else if (status === 'full')    cls += ' cal-cell--full';
+          else if (status === 'unavailable') cls += ' cal-cell--unavailable';
+
+          html += '<div class="' + cls + '" role="gridcell" aria-label="' + dateStr + '">' +
+                  '<span class="cal-day-num">' + d + '</span></div>';
+        }
+
+        grid.innerHTML = html;
+      }).catch(function () {
+        grid.innerHTML = '<p class="cal-error">Unable to load availability right now. Please check back shortly.</p>';
+      });
+    }
+
+    document.getElementById('cal-prev').addEventListener('click', function () {
+      month--;
+      if (month < 0) { month = 11; year--; }
+      renderMonth(year, month);
+    });
+
+    document.getElementById('cal-next').addEventListener('click', function () {
+      month++;
+      if (month > 11) { month = 0; year++; }
+      renderMonth(year, month);
+    });
+
+    renderMonth(year, month);
+  }());
   </script>
 
 </body>
