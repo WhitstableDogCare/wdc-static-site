@@ -565,7 +565,39 @@ li { margin-bottom: 0.3rem; }
    ============================================= */
 
 .testimonials-section h2 {
-  margin-bottom: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.testimonials-rating {
+  margin-bottom: 2rem;
+}
+
+.testimonials-rating__stars {
+  color: #f5a623;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  margin-right: 0.4rem;
+}
+
+.testimonials-rating__label {
+  font-size: 0.95rem;
+  color: var(--body-text);
+}
+
+.testimonial-card__stars {
+  color: #f5a623;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.05em;
+}
+
+.testimonials-more-link {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--body-text);
+  font-weight: 500;
 }
 
 .testimonials-grid {
