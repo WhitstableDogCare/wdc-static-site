@@ -164,9 +164,7 @@
   <!-- Availability calendar widget -->
   <script>
   (function () {
-    var CALENDAR_ID = 'c_4d80f180f301ddb8c681fedffda3b8d68306fdf77db0388debc7cf456036a260@group.calendar.google.com';
-    var API_KEY     = 'AIzaSyB7azbuW6AgV42mdCC1V2lqmxZh5UlQjwg';
-    var MONTHS      = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
     var grid  = document.getElementById('cal-grid');
     var label = document.getElementById('cal-month-label');
@@ -188,14 +186,10 @@
     }
 
     function fetchEvents(y, m) {
-      var start  = new Date(y, m, 1).toISOString();
-      var end    = new Date(y, m + 1, 0, 23, 59, 59).toISOString();
-      var calId  = encodeURIComponent(CALENDAR_ID);
-      var url    = 'https://www.googleapis.com/calendar/v3/calendars/' + calId +
-                   '/events?key=' + API_KEY +
-                   '&timeMin=' + encodeURIComponent(start) +
-                   '&timeMax=' + encodeURIComponent(end) +
-                   '&singleEvents=true&orderBy=startTime';
+      var start = new Date(y, m, 1).toISOString();
+      var end   = new Date(y, m + 1, 0, 23, 59, 59).toISOString();
+      var url   = '/api/calendar?timeMin=' + encodeURIComponent(start) +
+                  '&timeMax=' + encodeURIComponent(end);
       return fetch(url).then(function (r) { return r.json(); });
     }
 
