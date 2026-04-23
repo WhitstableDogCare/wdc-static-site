@@ -2,6 +2,12 @@
   functions = "netlify/functions"
 
 [[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/api/calendar"
   to = "/.netlify/functions/calendar"
   status = 200
