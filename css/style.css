@@ -919,11 +919,11 @@ tbody tr:nth-child(even) {
 .hww-contact {
   margin-top: 1.25rem;
   font-size: 0.9rem;
-  color: #c8c2bc;
+  color: var(--body-text);
 }
 
 .hww-contact a {
-  color: var(--white);
+  color: var(--body-text);
   font-weight: 600;
 }
 
