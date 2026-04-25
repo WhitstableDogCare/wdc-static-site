@@ -932,28 +932,6 @@ tbody tr:nth-child(even) {
   padding: 4rem 0;
 }
 
-/* =============================================
-   WOOF SHED
-   ============================================= */
-
-.woof-shed-hero {
-  padding: 5rem 2rem;
-  text-align: center;
-}
-
-.woof-shed-hero h1 {
-  color: var(--body-text);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  letter-spacing: 0.04em;
-  margin-bottom: 1.5rem;
-}
-
-.woof-shed-hero p {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.15rem;
-  color: var(--body-text);
-}
 
 .gallery-grid {
   display: grid;
