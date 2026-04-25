@@ -919,16 +919,16 @@ tbody tr:nth-child(even) {
 .hww-contact {
   margin-top: 1.25rem;
   font-size: 0.9rem;
-  color: var(--body-text);
+  color: #c8c2bc;
 }
 
 .hww-contact a {
-  color: var(--body-text);
+  color: var(--white);
   font-weight: 600;
 }
 
 .timetable-section {
-  background: var(--gold);
+  background: var(--cream);
   padding: 4rem 0;
 }
 
