@@ -937,14 +937,12 @@ tbody tr:nth-child(even) {
    ============================================= */
 
 .woof-shed-hero {
-  background: var(--charcoal);
-  color: var(--white);
   padding: 5rem 2rem;
   text-align: center;
 }
 
 .woof-shed-hero h1 {
-  color: var(--white);
+  color: var(--body-text);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   letter-spacing: 0.04em;
   margin-bottom: 1.5rem;
@@ -954,7 +952,7 @@ tbody tr:nth-child(even) {
   max-width: 700px;
   margin: 0 auto;
   font-size: 1.15rem;
-  color: #e0d9d0;
+  color: var(--body-text);
 }
 
 .gallery-grid {
