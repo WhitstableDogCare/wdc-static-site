@@ -586,10 +586,10 @@ li { margin-bottom: 0.3rem; }
 }
 
 .pricing-summary-card {
-  background: var(--gold);
+  background: rgba(255,255,255,0.45);
   border-radius: 12px;
   padding: 2rem;
-  border: 1px solid rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
 .pricing-summary-card h3 {
