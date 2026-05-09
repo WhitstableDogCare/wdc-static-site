@@ -142,31 +142,45 @@
       </div>
     </section>
 
-    <!-- CONTACT / INTRO -->
-    <section class="contact-section section--gold" style="border-top: 2px solid rgba(0,0,0,0.08);">
+    <!-- AVAILABILITY -->
+    <section class="section section--gold">
       <div class="container">
-        <div class="two-col">
+        <p class="subheading">Are we available?</p>
+        <h2>Check Availability</h2>
+        <p>We have space for up to 5 dogs. Check our live calendar for current availability.</p>
+        <div class="two-col avail-home-cols">
 
-          <div>
-            <h2><a href="availability.html">Available Spaces</a></h2>
+          <div class="availability-calendar home-calendar" id="home-availability-calendar">
+            <div class="cal-header">
+              <button class="cal-nav" id="home-cal-prev" aria-label="Previous month">&#8249;</button>
+              <h3 class="cal-month-label" id="home-cal-month-label"></h3>
+              <button class="cal-nav" id="home-cal-next" aria-label="Next month">&#8250;</button>
+            </div>
+            <div class="cal-grid-header" aria-hidden="true">
+              <span>Mon</span><span>Tue</span><span>Wed</span>
+              <span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+            <div class="cal-grid" id="home-cal-grid" role="grid">
+              <div class="cal-loading">Loading availability…</div>
+            </div>
+            <div class="cal-legend" aria-label="Calendar key">
+              <span class="cal-legend-item"><span class="cal-dot cal-dot--green"></span> Available</span>
+              <span class="cal-legend-item"><span class="cal-dot cal-dot--amber"></span> Limited</span>
+              <span class="cal-legend-item"><span class="cal-dot cal-dot--red"></span> Fully booked</span>
+              <span class="cal-legend-item"><span class="cal-dot cal-dot--grey"></span> Unavailable</span>
+            </div>
+          </div>
 
+          <div class="avail-home-contact">
+            <h3>Get in touch to book</h3>
             <div class="contact-info">
               <p>
-                <a href="tel:07840469646">Tel: 07840 469 646</a><br>
+                <a href="tel:07840469646">07840 469 646</a><br>
                 <a href="mailto:jack@whitstabledogcare.co.uk">jack@whitstabledogcare.co.uk</a>
               </p>
             </div>
-
-            <p>We are a husband-and-wife-run, home-from-home dog day care and boarding business, based in Whitstable, Kent. Find out more about <a href="about.html">us</a>. Our family home includes our two daughters, aged 7 and 10 who we co-parent, our two whippets Blue and Ivy, and our cat Snooki.</p>
-            <p>We love and look after your dog as though they are our own. In order to do this we make sure that we are the best environment for your dog and that they are best suited for us. Find out more about <a href="how-we-work.html">how we work</a>.</p>
-          </div>
-
-          <div>
-            <img
-              loading="lazy"
-              src="images/blue-garden.webp"
-              alt="Blue the whippet in the garden"
-              style="width:100%; height:auto; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.12);" width="700" height="759" />
+            <a href="mailto:jack@whitstabledogcare.co.uk?subject=Meet%20%26%20Greet%20Enquiry" class="btn-cta">Book a Free Meet &amp; Greet</a>
+            <p class="avail-home-link"><a href="availability.html">View full availability calendar →</a></p>
           </div>
 
         </div>
@@ -320,6 +334,92 @@
     4 Star Licence | Jack Rojas Powell ABOARD/25/01133</p>
     <p class="footer-copyright">&copy; <span id="year"></span> Whitstable Dog Care</p>
   </footer>
+
+  <!-- Home availability calendar widget -->
+  <script>
+  (function () {
+    var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    var grid  = document.getElementById('home-cal-grid');
+    var label = document.getElementById('home-cal-month-label');
+    var now   = new Date();
+    var year  = now.getFullYear();
+    var month = now.getMonth();
+
+    function getStatus(event) {
+      var title = event.summary || '';
+      var desc  = event.description || '';
+      if (title === 'Fully Booked')      return 'full';
+      if (title === 'Unavailable')       return 'unavailable';
+      if (title === 'Spaces Available')  return /^[12] space/.test(desc) ? 'limited' : 'available';
+      return null;
+    }
+
+    function fetchEvents(y, m) {
+      var start = new Date(y, m, 1).toISOString();
+      var end   = new Date(y, m + 1, 0, 23, 59, 59).toISOString();
+      var url   = '/api/calendar?timeMin=' + encodeURIComponent(start) + '&timeMax=' + encodeURIComponent(end);
+      return fetch(url).then(function (r) { return r.json(); });
+    }
+
+    function buildEventMap(events) {
+      var map = {};
+      (events || []).forEach(function (e) {
+        var date = e.start && e.start.date;
+        if (date) map[date] = getStatus(e);
+      });
+      return map;
+    }
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function renderMonth(y, m) {
+      label.textContent = MONTHS[m] + ' ' + y;
+      grid.innerHTML = '<div class="cal-loading">Loading availability…</div>';
+
+      fetchEvents(y, m).then(function (data) {
+        var eventMap = buildEventMap(data.items);
+        var firstDay = new Date(y, m, 1);
+        var lastDate = new Date(y, m + 1, 0).getDate();
+        var todayStr = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+        var offset   = (firstDay.getDay() + 6) % 7;
+        var html = '';
+
+        for (var i = 0; i < offset; i++) {
+          html += '<div class="cal-cell cal-cell--empty"></div>';
+        }
+        for (var d = 1; d <= lastDate; d++) {
+          var dateStr = y + '-' + pad(m + 1) + '-' + pad(d);
+          var status  = eventMap[dateStr];
+          var isPast  = dateStr < todayStr;
+          var isToday = dateStr === todayStr;
+          var cls = 'cal-cell';
+          if (isPast)                        cls += ' cal-cell--past';
+          if (isToday)                       cls += ' cal-cell--today';
+          if (status === 'available')        cls += ' cal-cell--available';
+          else if (status === 'limited')     cls += ' cal-cell--limited';
+          else if (status === 'full')        cls += ' cal-cell--full';
+          else if (status === 'unavailable') cls += ' cal-cell--unavailable';
+          html += '<div class="' + cls + '" role="gridcell" aria-label="' + dateStr + '"><span class="cal-day-num">' + d + '</span></div>';
+        }
+        grid.innerHTML = html;
+      }).catch(function () {
+        grid.innerHTML = '<p class="cal-error">Unable to load availability right now. <a href="availability.html">View full calendar →</a></p>';
+      });
+    }
+
+    document.getElementById('home-cal-prev').addEventListener('click', function () {
+      month--; if (month < 0) { month = 11; year--; }
+      renderMonth(year, month);
+    });
+    document.getElementById('home-cal-next').addEventListener('click', function () {
+      month++; if (month > 11) { month = 0; year++; }
+      renderMonth(year, month);
+    });
+
+    renderMonth(year, month);
+  }());
+  </script>
 
   <script>
     // Set current year in footer

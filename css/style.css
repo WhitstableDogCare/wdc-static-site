@@ -1221,6 +1221,40 @@ tbody tr:nth-child(even) {
 }
 
 /* =============================================
+   AVAILABILITY (HOME SECTION)
+   ============================================= */
+
+.avail-home-cols {
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.home-calendar {
+  max-width: none;
+}
+
+.avail-home-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.avail-home-contact h3 {
+  margin-bottom: 0.5rem;
+}
+
+.avail-home-contact .btn-cta {
+  align-self: flex-start;
+  margin-bottom: 0;
+}
+
+.avail-home-link {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+/* =============================================
    AVAILABILITY CALENDAR
    ============================================= */
 
