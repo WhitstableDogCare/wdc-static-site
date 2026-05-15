@@ -13,6 +13,10 @@
   --purple: #B295D9;
   --black: #000000;
   --cream: #F5E9C8;
+  --cta-purple: #7c5ca8;
+  --font-display: 'Merienda', cursive;
+  --font-label: 'Oswald', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
 }
 
 /* --- Reset & Base --- */
@@ -646,6 +650,122 @@ li { margin-bottom: 0.3rem; }
 @media (max-width: 640px) {
   .pricing-summary-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ── Rebalanced pricing cards ── */
+.pricing-summary-card--balanced {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-summary-card__hours {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--body-text);
+  margin: 0.25rem 0 1rem;
+}
+
+.pricing-summary-card--balanced .pricing-summary-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed rgba(61, 61, 61, 0.15);
+}
+
+.pricing-summary-card--balanced .pricing-summary-list li:last-child {
+  border-bottom: 0;
+}
+
+.pricing-summary-list__label {
+  display: flex;
+  flex-direction: column;
+  color: var(--charcoal);
+  font-weight: 600;
+}
+
+.pricing-summary-list__sub {
+  font-weight: 400;
+  font-size: 0.82rem;
+  color: var(--body-text);
+  margin-top: 0.15rem;
+}
+
+.pricing-summary-list__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--cta-purple);
+  white-space: nowrap;
+}
+
+.pricing-summary-list__peak {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--body-text);
+  font-weight: 400;
+  margin-top: 0.2rem;
+}
+
+.pricing-summary-card__included {
+  background: var(--cream);
+  border-radius: 10px;
+  padding: 0.9rem 1rem 1rem;
+  margin-top: auto;
+}
+
+.pricing-summary-card__included-title {
+  font-family: var(--font-label);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--charcoal);
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.pricing-summary-card__included-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.pricing-summary-card__included-list li {
+  font-size: 0.9rem;
+  color: var(--body-text);
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.45;
+  margin-bottom: 0;
+}
+
+.pricing-summary-card__included-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--cta-purple);
+  font-weight: 700;
+}
+
+.pricing-summary-grid {
+  align-items: stretch;
+}
+
+@media (max-width: 640px) {
+  .pricing-summary-card--balanced .pricing-summary-list li {
+    padding: 0.6rem 0;
+  }
+  .pricing-summary-list__price {
+    font-size: 1rem;
   }
 }
 
