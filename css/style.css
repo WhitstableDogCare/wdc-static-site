@@ -1548,8 +1548,9 @@ tbody tr:nth-child(even) {
   padding: 0;
 }
 
-/* ── Mobile: full-bleed photo, natural height, hard cut to gold ── */
+/* ── Mobile: full-bleed photo, natural height, fades into gold ── */
 .hero-v2__photo {
+  position: relative;
   width: 100%;
   overflow: hidden;
   line-height: 0;
@@ -1560,6 +1561,18 @@ tbody tr:nth-child(even) {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.hero-v2__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 60%,
+    var(--gold) 100%
+  );
 }
 
 /* Hide desktop photo column on mobile */
