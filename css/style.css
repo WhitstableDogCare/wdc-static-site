@@ -1608,13 +1608,46 @@ tbody tr:nth-child(even) {
 }
 
 .hero-v2__bullets li {
+  position: relative;
+  padding-left: 2.25rem;
   font-family: var(--font-label);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.85rem;
   color: var(--charcoal);
   line-height: 1.3;
+  min-height: 22px;
+  display: flex;
+  align-items: center;
   margin-bottom: 0;
+}
+
+/* Cream circle with purple border */
+.hero-v2__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 2px solid var(--cta-purple);
+  box-sizing: border-box;
+}
+
+/* Purple tick */
+.hero-v2__bullets li::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  width: 5px;
+  height: 10px;
+  border: solid var(--cta-purple);
+  border-width: 0 2px 2px 0;
+  transform: translateY(-65%) rotate(45deg);
 }
 
 .hero-v2__cta-wrap {
@@ -1706,6 +1739,19 @@ tbody tr:nth-child(even) {
 
   .hero-v2__bullets li {
     font-size: 0.95rem;
+    padding-left: 2.5rem;
+    min-height: 26px;
+  }
+
+  .hero-v2__bullets li::before {
+    width: 26px;
+    height: 26px;
+  }
+
+  .hero-v2__bullets li::after {
+    left: 8.5px;
+    width: 6px;
+    height: 12px;
   }
 
   .hero-v2__cta-wrap .btn-cta {
