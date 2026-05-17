@@ -12,7 +12,7 @@
   <meta property="og:image" content="https://whitstabledogcare.co.uk/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <link rel="preload" as="image" href="images/logo.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="images/garden-tulips-dog.webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700;900&family=Oswald:wght@400;500;600&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -79,36 +79,52 @@
   <main>
 
     <!-- HERO -->
-    <section class="hero section--gold" style="position:relative; padding-top:1.5rem; padding-bottom:3rem;">
-      <div class="container">
-        <div class="hero-inner">
-          <div class="hero-logo-wrap">
-            <img src="images/logo.webp" alt="Whitstable Dog Care circular logo" width="440" height="440" fetchpriority="high" loading="eager" />
-          </div>
-          <div class="hero-content">
-            <p class="subheading">Whitstable, Kent</p>
-            <h1>Home-from-home, family-run day care &amp; boarding</h1>
-            <p class="hero-address">Walmer Road, Whitstable, Kent</p>
+    <section class="hero-v2 section--gold">
 
-            <div class="hero-cta-wrap">
-              <a href="mailto:jack@whitstabledogcare.co.uk?subject=Meet%20%26%20Greet%20Enquiry" class="btn-cta">Book a Free Meet &amp; Greet</a>
-              <p class="cta-reassurance">No-obligation visit to see the space, meet us, and check your dog is a good fit.</p>
-            </div>
+      <!-- Mobile photo (full-bleed, fades into gold) -->
+      <div class="hero-v2__photo">
+        <img
+          src="images/garden-tulips-dog.webp"
+          alt="A brindle whippet resting on the lawn behind a flower bed of pink tulips and blue cornflowers"
+          width="768" height="1024"
+          fetchpriority="high"
+          loading="eager" />
+      </div>
 
-            <ul class="hero-bullets">
-              <li>Half &amp; full day care</li>
-              <li>Boarding</li>
-              <li>Calm, supervised environment</li>
-              <li>Owners drop-off and pick-up</li>
-              <li>Secure purpose-built dog area</li>
-              <li>Walks, play, enrichment and rest</li>
-              <li>Certified, qualified, fully insured, DBS checked</li>
-              <li><strong>🛡️ 4 Star Licence to Jack Rojas Powell ABOARD/25/01133</strong></li>
-              <li>24hr vet assistance</li>
-              <li>Daily updates for owners</li>
-            </ul>
-          </div>
+      <div class="hero-v2__content container">
+
+        <!-- Desktop photo (tall card, left column) -->
+        <div class="hero-v2__photo-desktop" aria-hidden="true">
+          <img
+            src="images/garden-tulips-dog.webp"
+            alt=""
+            width="768" height="1024"
+            loading="eager" />
         </div>
+
+        <div class="hero-v2__text">
+          <p class="subheading">Whitstable, Kent</p>
+          <h1>Home-from-home day care &amp; boarding</h1>
+          <p class="hero-v2__addr">Walmer Road, Whitstable</p>
+
+          <ul class="hero-v2__bullets">
+            <li>Day care &amp; boarding</li>
+            <li>Calm &middot; max 5 dogs</li>
+            <li>Walks, play &amp; rest</li>
+            <li>Daily photo updates</li>
+          </ul>
+
+          <div class="hero-v2__cta-wrap">
+            <a href="mailto:jack@whitstabledogcare.co.uk?subject=Meet%20%26%20Greet%20Enquiry" class="btn-cta">Book a Free Meet &amp; Greet</a>
+            <p class="hero-v2__reassurance">No-obligation visit to see the space, meet us, and check your dog is a good fit.</p>
+          </div>
+
+          <p class="hero-v2__licence">
+            <strong>★ 4-Star Licensed</strong> &middot; DBS checked &middot; Fully insured &middot;
+            Canterbury CC ABOARD/25/01133
+          </p>
+        </div>
+
       </div>
     </section>
 
