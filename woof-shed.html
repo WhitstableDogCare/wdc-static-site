@@ -1,19 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H8V5NB6T25"></script>
+  <!-- Google tag (gtag.js) — script itself is only requested after cookie consent is accepted, see body -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
-    });
-    gtag('js', new Date());
-    gtag('config', 'G-H8V5NB6T25');
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -123,7 +114,7 @@
 <body>
 
   <div id="cookie-consent" class="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
-    <p class="cookie-consent__text">We use cookies to understand how people use our site. We only switch on analytics if you say yes — you can change your mind any time.</p>
+    <p class="cookie-consent__text">We use cookies to understand how people use our site. We only switch on analytics if you say yes — you can change your mind any time. Read our <a href="privacy.html" style="color:inherit;">privacy policy</a>.</p>
     <div class="cookie-consent__actions">
       <button type="button" class="cookie-consent__btn cookie-consent__btn--accept" onclick="wdcSetConsent(true)">Accept</button>
       <button type="button" class="cookie-consent__btn cookie-consent__btn--reject" onclick="wdcSetConsent(false)">Necessary only</button>
@@ -132,21 +123,27 @@
   <script>
   (function () {
     var KEY = 'wdc_cookie_consent';
-    function applyConsent(granted) {
-      if (typeof gtag === 'function') {
-        gtag('consent', 'update', { 'analytics_storage': granted ? 'granted' : 'denied' });
-      }
+    var gaLoaded = false;
+    function loadGA() {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-H8V5NB6T25';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-H8V5NB6T25');
     }
     window.wdcSetConsent = function (granted) {
       localStorage.setItem(KEY, granted ? 'granted' : 'denied');
-      applyConsent(granted);
+      if (granted) loadGA();
       var banner = document.getElementById('cookie-consent');
       if (banner) banner.classList.remove('is-visible');
     };
     var stored = localStorage.getItem(KEY);
-    if (stored) {
-      applyConsent(stored === 'granted');
-    } else {
+    if (stored === 'granted') {
+      loadGA();
+    } else if (!stored) {
       document.addEventListener('DOMContentLoaded', function () {
         var banner = document.getElementById('cookie-consent');
         if (banner) banner.classList.add('is-visible');
@@ -250,6 +247,7 @@
     <p><a href="tel:07840469646">07840 469 646</a></p>
     <p><a href="mailto:jack@whitstabledogcare.co.uk">jack@whitstabledogcare.co.uk</a></p>
     <p><a href="https://share.google/zNQRvtwh0eRR4QSle" target="_blank" rel="noopener">Find us on Google</a></p>
+    <p><a href="privacy.html">Privacy Policy</a></p>
     <p class="footer-licence">Canterbury City Council Home Boarding for Dogs<br>
     4 Star Licence | Jack Rojas Powell ABOARD/25/01133</p>
     <p class="footer-copyright">&copy; <span id="year"></span> Whitstable Dog Care</p>

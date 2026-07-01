@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) — script itself is only requested after cookie consent is accepted, see body -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Whitstable Dog Care</title>
+  <meta name="description" content="How Whitstable Dog Care handles your information, including our use of cookies and Google Analytics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://whitstabledogcare.co.uk/privacy" />
+  <meta property="og:title" content="Privacy Policy — Whitstable Dog Care" />
+  <meta property="og:description" content="How Whitstable Dog Care handles your information, including our use of cookies and Google Analytics." />
+  <meta property="og:image" content="https://whitstabledogcare.co.uk/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700;900&family=Oswald:wght@400;500;600&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700;900&family=Oswald:wght@400;500;600&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" /></noscript>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://whitstabledogcare.co.uk/" },
+      { "@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://whitstabledogcare.co.uk/privacy" }
+    ]
+  }
+  </script>
+  <link rel="canonical" href="https://whitstabledogcare.co.uk/privacy" />
+</head>
+<body>
+
+  <div id="cookie-consent" class="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <p class="cookie-consent__text">We use cookies to understand how people use our site. We only switch on analytics if you say yes — you can change your mind any time. Read our <a href="privacy.html" style="color:inherit;">privacy policy</a>.</p>
+    <div class="cookie-consent__actions">
+      <button type="button" class="cookie-consent__btn cookie-consent__btn--accept" onclick="wdcSetConsent(true)">Accept</button>
+      <button type="button" class="cookie-consent__btn cookie-consent__btn--reject" onclick="wdcSetConsent(false)">Necessary only</button>
+    </div>
+  </div>
+  <script>
+  (function () {
+    var KEY = 'wdc_cookie_consent';
+    var gaLoaded = false;
+    function loadGA() {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-H8V5NB6T25';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-H8V5NB6T25');
+    }
+    window.wdcSetConsent = function (granted) {
+      localStorage.setItem(KEY, granted ? 'granted' : 'denied');
+      if (granted) loadGA();
+      var banner = document.getElementById('cookie-consent');
+      if (banner) banner.classList.remove('is-visible');
+    };
+    var stored = localStorage.getItem(KEY);
+    if (stored === 'granted') {
+      loadGA();
+    } else if (!stored) {
+      document.addEventListener('DOMContentLoaded', function () {
+        var banner = document.getElementById('cookie-consent');
+        if (banner) banner.classList.add('is-visible');
+      });
+    }
+  })();
+  </script>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="header-logo">
+        <img src="images/logo.webp" alt="Whitstable Dog Care logo" width="440" height="440" />
+        <span>Whitstable<br>Dog Care</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="services.html">Services &amp; Pricing</a>
+        <a href="availability.html">Availability</a>
+        <a href="how-we-work.html">How We Work</a>
+        <a href="woof-shed.html">The Woof Shed</a>
+        <a href="about.html">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- GRASS STRIP -->
+  <div class="grass-strip">
+    <img src="images/blue-grass.webp" alt="" role="presentation" width="800" height="159" />
+  </div>
+
+  <main>
+
+    <!-- PAGE HEADING -->
+    <section class="section section--gold" style="padding-top:1.5rem; padding-bottom:1rem;">
+      <div class="container">
+        <p class="subheading">How we look after your information</p>
+        <h1>Privacy Policy</h1>
+        <p><em>Last updated: 1 July 2026</em></p>
+      </div>
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section class="section section--gold" style="position:relative; padding-top:1.5rem;">
+      <div class="container">
+        <h2>Who we are</h2>
+        <p>Whitstable Dog Care is a family-run dog day care and boarding business based on Walmer Road, Whitstable, Kent. This page explains what information we collect through this website and how we use it. If anything's unclear, email <a href="mailto:jack@whitstabledogcare.co.uk">jack@whitstabledogcare.co.uk</a> and we'll happily explain.</p>
+      </div>
+    </section>
+
+    <!-- SHORT VERSION -->
+    <section class="section section--cream">
+      <div class="container">
+        <h2>The short version</h2>
+        <p>There's no booking form or account system on this website, so we don't collect or store any personal information ourselves through it. The only outside service that ever sees anything about your visit is Google Analytics — and only if you click "Accept" on our cookie banner. If you click "Necessary only" (or don't make a choice), nothing is sent to Google.</p>
+      </div>
+    </section>
+
+    <!-- HOW YOU CONTACT US -->
+    <section class="section section--gold">
+      <div class="container">
+        <h2>When you get in touch</h2>
+        <p>When you contact us by phone, email or WhatsApp, we'll see your name, phone number and/or email address, and whatever else you choose to tell us — for example your dog's name, breed, and care needs. We use this only to arrange and provide day care or boarding, and we keep it for as long as we need it for that purpose, generally for the length of our relationship with you and your dog.</p>
+        <p>We don't sell, rent or share your information with anyone else, other than where we're legally required to.</p>
+      </div>
+    </section>
+
+    <!-- COOKIES & ANALYTICS -->
+    <section class="section section--cream">
+      <div class="container">
+        <h2>Cookies &amp; analytics</h2>
+        <p>We use Google Analytics to understand how many people visit the site and which pages are useful, so we can improve it. The Analytics script is only loaded if you click "Accept" on the cookie banner. If you click "Necessary only", or close the banner without choosing, the script is never requested and no data is sent to Google.</p>
+        <p>If you do accept, Google Analytics sets the following cookies:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Cookie</th>
+              <th>Purpose</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>_ga</td>
+              <td>Distinguishes unique visitors</td>
+              <td>2 years</td>
+            </tr>
+            <tr>
+              <td>_ga_&lt;container-id&gt;</td>
+              <td>Persists session state for Analytics</td>
+              <td>2 years</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="table-note">Your choice is remembered in your browser's local storage, so you won't be asked again on this device unless you clear your browser data. You can change your mind at any time by clearing site data/cookies for whitstabledogcare.co.uk and reloading the page.</p>
+      </div>
+    </section>
+
+    <!-- OTHER SERVICES -->
+    <section class="section section--gold">
+      <div class="container">
+        <h2>Other services this site uses</h2>
+        <p>Some parts of this site load resources directly from other providers — for example Google Fonts (for page text) and our Google Business Profile, Instagram, Yell and Nextdoor pages, which we link to. Visiting those providers' servers, or clicking through to their sites, is governed by their own privacy policies, not ours.</p>
+        <p>This website is hosted by Netlify, who may keep standard technical server logs (such as IP address and browser type) for security and performance, in line with their own privacy policy.</p>
+      </div>
+    </section>
+
+    <!-- YOUR RIGHTS -->
+    <section class="section section--cream">
+      <div class="container">
+        <h2>Your rights</h2>
+        <p>Under UK data protection law, you can ask what information we hold about you, ask us to correct or delete it, and object to how we use it. To do any of this, email <a href="mailto:jack@whitstabledogcare.co.uk">jack@whitstabledogcare.co.uk</a>.</p>
+        <p>If you're unhappy with how we've handled your information, you can also complain to the <a href="https://ico.org.uk" target="_blank" rel="noopener">Information Commissioner's Office</a>.</p>
+      </div>
+    </section>
+
+    <!-- CHANGES -->
+    <section class="section section--gold">
+      <div class="container">
+        <h2>Changes to this policy</h2>
+        <p>We may update this policy from time to time — for example if we start using a new tool or service. We'll update the date at the top of this page whenever we do.</p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--cream" style="text-align:center;">
+      <div class="container">
+        <h2>Questions?</h2>
+        <p>Get in touch any time and we'll be happy to help.</p>
+        <a href="mailto:jack@whitstabledogcare.co.uk" class="btn-cta" style="margin-top:1rem;">Email Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <img src="images/footer-logo.webp" alt="Whitstable Dog Care logo" class="footer-logo" width="200" height="200" />
+    <p><a href="tel:07840469646">07840 469 646</a></p>
+    <p><a href="mailto:jack@whitstabledogcare.co.uk">jack@whitstabledogcare.co.uk</a></p>
+    <p><a href="https://share.google/zNQRvtwh0eRR4QSle" target="_blank" rel="noopener">Find us on Google</a></p>
+    <p><a href="privacy.html">Privacy Policy</a></p>
+    <p class="footer-licence">Canterbury City Council Home Boarding for Dogs<br>
+    4 Star Licence | Jack Rojas Powell ABOARD/25/01133</p>
+    <p class="footer-copyright">&copy; <span id="year"></span> Whitstable Dog Care</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('site-nav');
+    hamburger.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+  </script>
+
+</body>
+</html>

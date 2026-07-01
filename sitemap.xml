@@ -37,4 +37,10 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://whitstabledogcare.co.uk/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
