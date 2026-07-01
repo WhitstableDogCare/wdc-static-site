@@ -6,6 +6,12 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
     gtag('js', new Date());
     gtag('config', 'G-H8V5NB6T25');
   </script>
@@ -69,6 +75,7 @@
     "openingHours": "Mo-Su 07:30-21:00",
     "sameAs": [
       "https://maps.app.goo.gl/Xas24WrXm4qyw3E78",
+      "https://share.google/zNQRvtwh0eRR4QSle",
       "https://www.instagram.com/whitstabledogcare/",
       "https://maps.apple.com/p/wR4-Y2Sefy-_Zt",
       "https://www.yell.com/biz/whitstable-dog-care-whitstable-11027929/",
@@ -93,6 +100,39 @@
   <link rel="canonical" href="https://whitstabledogcare.co.uk/availability" />
 </head>
 <body>
+
+  <div id="cookie-consent" class="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
+    <p class="cookie-consent__text">We use cookies to understand how people use our site. We only switch on analytics if you say yes — you can change your mind any time.</p>
+    <div class="cookie-consent__actions">
+      <button type="button" class="cookie-consent__btn cookie-consent__btn--accept" onclick="wdcSetConsent(true)">Accept</button>
+      <button type="button" class="cookie-consent__btn cookie-consent__btn--reject" onclick="wdcSetConsent(false)">Necessary only</button>
+    </div>
+  </div>
+  <script>
+  (function () {
+    var KEY = 'wdc_cookie_consent';
+    function applyConsent(granted) {
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', { 'analytics_storage': granted ? 'granted' : 'denied' });
+      }
+    }
+    window.wdcSetConsent = function (granted) {
+      localStorage.setItem(KEY, granted ? 'granted' : 'denied');
+      applyConsent(granted);
+      var banner = document.getElementById('cookie-consent');
+      if (banner) banner.classList.remove('is-visible');
+    };
+    var stored = localStorage.getItem(KEY);
+    if (stored) {
+      applyConsent(stored === 'granted');
+    } else {
+      document.addEventListener('DOMContentLoaded', function () {
+        var banner = document.getElementById('cookie-consent');
+        if (banner) banner.classList.add('is-visible');
+      });
+    }
+  })();
+  </script>
 
   <!-- HEADER -->
   <header class="site-header">
@@ -182,6 +222,7 @@
     <img src="images/footer-logo.webp" alt="Whitstable Dog Care logo" class="footer-logo" width="200" height="200" />
     <p><a href="tel:07840469646">07840 469 646</a></p>
     <p><a href="mailto:jack@whitstabledogcare.co.uk">jack@whitstabledogcare.co.uk</a></p>
+    <p><a href="https://share.google/zNQRvtwh0eRR4QSle" target="_blank" rel="noopener">Find us on Google</a></p>
     <p class="footer-licence">Canterbury City Council Home Boarding for Dogs<br>
     4 Star Licence | Jack Rojas Powell ABOARD/25/01133</p>
     <p class="footer-copyright">&copy; <span id="year"></span> Whitstable Dog Care</p>
