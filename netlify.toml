@@ -8,6 +8,42 @@
   force = true
 
 [[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services.html"
+  to = "/services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/availability.html"
+  to = "/availability"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/how-we-work.html"
+  to = "/how-we-work"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/woof-shed.html"
+  to = "/woof-shed"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/api/calendar"
   to = "/.netlify/functions/calendar"
   status = 200
