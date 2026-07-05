@@ -43,4 +43,10 @@
     <priority>0.3</priority>
   </url>
 
+  <url>
+    <loc>https://whitstabledogcare.co.uk/policy-and-procedures</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
 </urlset>

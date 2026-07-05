@@ -44,6 +44,12 @@
   force = true
 
 [[redirects]]
+  from = "/policy-and-procedures.html"
+  to = "/policy-and-procedures"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/api/calendar"
   to = "/.netlify/functions/calendar"
   status = 200

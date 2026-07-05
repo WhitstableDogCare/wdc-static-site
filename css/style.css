@@ -1916,3 +1916,85 @@ tbody tr:nth-child(even) {
     padding: 1rem;
   }
 }
+
+/* =============================================
+   POLICY & PROCEDURES — TABLE OF CONTENTS
+   ============================================= */
+
+.policy-toc {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  padding: 1.75rem 2rem;
+}
+
+.policy-toc ol {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  columns: 2;
+  column-gap: 2.5rem;
+}
+
+.policy-toc li {
+  break-inside: avoid;
+  counter-increment: none;
+  margin-bottom: 0.6rem;
+}
+
+.policy-toc a {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.policy-toc a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .policy-toc {
+    padding: 1.25rem 1.5rem;
+  }
+  .policy-toc ol {
+    columns: 1;
+  }
+}
+
+.back-to-contents {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.back-to-contents:hover {
+  text-decoration: underline;
+}
+
+@media print {
+  .site-header,
+  .grass-strip,
+  .site-footer,
+  .cookie-consent,
+  .hamburger,
+  .policy-toc,
+  .back-to-contents {
+    display: none !important;
+  }
+  body {
+    background: var(--white);
+  }
+  .section {
+    padding: 0.5rem 0;
+  }
+  a {
+    color: var(--body-text);
+    text-decoration: none;
+  }
+}
